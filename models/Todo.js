@@ -65,7 +65,8 @@ Todo.prototype.readTodo = async function() {
 Todo.prototype.statusTodo = async function() {
     try {
         const  currentStatus = await db.query(
-            `SELECT completed_at FROM tasks WHERE id=7`
+            `SELECT completed_at FROM tasks WHERE id=$1`,
+            [this.task]
 
         )
         // console.log(currentStatus.rows[0].completed_at)
